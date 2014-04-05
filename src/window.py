@@ -180,8 +180,6 @@ class Window(Form, Base):
         layeredTexture.outColor.connect(newArnold.emissionColor)
         newArnold.color.set(0, 0, 0)
         newArnold.KsColor.set(0, 0, 0)
-        newArnold.KrColor.set(0, 0, 0)
-        newArnold.KtColor.set(0, 0, 0)
         newArnold.emission.set(1)
         for sg in pc.listConnections(blendMtl, type=pc.nt.ShadingEngine):
             newArnold.outColor.connect(sg.surfaceShader, f=True)
