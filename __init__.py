@@ -1,2 +1,3 @@
-import src.interface.window as win
+import src.window as win
 reload(win)
+Window = win.Window
