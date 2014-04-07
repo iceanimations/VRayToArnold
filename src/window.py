@@ -141,6 +141,7 @@ class Window(Form, Base):
                     mesh.aiOpaque.set(0)
                     
     def handleBlendMtl(self, blendMtl):
+        blendMtlName = str(blendMtl)
         baseMtl = None
         try:
             baseMtl = blendMtl.base_material.inputs()[0]
@@ -175,6 +176,9 @@ class Window(Form, Base):
         if baseArnold:
             baseArnold.outColor.connect(layeredTexture.attr("inputs")[count].color)
         newArnold = pc.shadingNode('aiStandard', asShader=True)
+        pc.rename(blendMtl, blendMtlName + 'temp_blen_mtl')
+        blenMtlName = blendMtlName.replace('VRayBlendMtl', 'aiStandard')
+        pc.rename(newArnold, blendMtlName)
         for sg in pc.listConnections(newArnold, type=pc.nt.ShadingEngine):
             pc.delete(sg)
         layeredTexture.outColor.connect(newArnold.emissionColor)
