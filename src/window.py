@@ -198,7 +198,7 @@ class Window(Form, Base):
                 attr = node.value.inputs(plugs=True)[0]
                 pc.delete(node)
             else:
-                attr = node.outColor
+                attr = node.outAlpha
         except:
             values = source.get()
             target.set((values[0] + values[1] + values[2])/3)
