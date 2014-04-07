@@ -98,7 +98,7 @@ class Window(Form, Base):
                    'reflectionGlossiness': 'specularRoughness', 'refractionGlossiness': 'refractionRoughness',
                    'anisotropy': 'specularAnisotropy', 'anisotropyRotation': 'specularRotation'}
         
-        if node.anisotropy.get():
+        if node.anisotropy.get() or node.anisotropyRotation.get():
             arnold.specularBrdf.set(1)
         arnold.specularFresnel.set(node.useFresnel.get())
         for src in mapping:
