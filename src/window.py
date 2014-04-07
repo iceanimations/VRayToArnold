@@ -95,11 +95,11 @@ class Window(Form, Base):
                    'illumColor':'emissionColor', 'diffuseColorAmount': 'Kd',
                    'roughnessAmount': 'diffuseRoughness', 'reflectionColorAmount': 'Ks',
                    'transparency': 'opacity', 'refractionColorAmount': 'Kt', 'refractionIOR': 'IOR',
-                   'reflectionGlossiness': 'specularRoughness', 'refractionGlossiness': 'refractionRoughness',
-                   'anisotropy': 'specularAnisotropy', 'anisotropyRotation': 'specularRotation'}
+                   'reflectionGlossiness': 'specularRoughness', 'refractionGlossiness': 'refractionRoughness'}
+#                   'anisotropy': 'specularAnisotropy', 'anisotropyRotation': 'specularRotation'}
         
-        if node.anisotropy.get() or node.anisotropyRotation.get():
-            arnold.specularBrdf.set(1)
+#         if node.anisotropy.get() or node.anisotropyRotation.get():
+#             arnold.specularBrdf.set(1)
         arnold.specularFresnel.set(node.useFresnel.get())
         for src in mapping:
             tgt = mapping[src]
