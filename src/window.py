@@ -163,6 +163,7 @@ class Window(Form, Base):
         for coatMtl in coatMtls:
             coatArnolds.append(self.createArnold(coatMtl))
         layeredTexture = pc.shadingNode('layeredTexture', asTexture=True)
+        pc.rename(layeredTexture, str(blendMtlName) +'_layeredTexture')
         count = 0
         additive_mode = blendMtl.additive_mode.get()
         for coatMtl in coatArnolds:
