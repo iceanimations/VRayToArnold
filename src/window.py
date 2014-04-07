@@ -195,8 +195,9 @@ class Window(Form, Base):
         try:
             node = source.inputs()[0]
             if type(node) == pc.nt.GammaCorrect:
-                attr = node.value.inputs(plugs=True)[0]
+                newNode = node.value.inputs()[0]
                 pc.delete(node)
+                attr = newNode.outAlpha
             else:
                 attr = node.outAlpha
         except:
