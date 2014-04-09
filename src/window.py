@@ -20,6 +20,7 @@ class Window(Form, Base):
         self.setupUi(self)
         self.closeButton.clicked.connect(self.close)
         self.convertButton.clicked.connect(self.convert)
+        self.selectButton.clicked.connect(self.selectVRay)
         self.progressBar.hide()
         
         # update the database, how many times this app is used
@@ -33,6 +34,9 @@ class Window(Form, Base):
     
     def hideEvent(self, event):
         self.close()
+        
+    def selectVRay(self):
+        pc.select(pc.ls(type=pc.nt.VRayMtl))
         
     def materials(self):
         materials = []
