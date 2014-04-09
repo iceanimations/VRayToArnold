@@ -9,6 +9,7 @@ import qtify_maya_window as qtfy
 
 import os.path as osp
 import sys
+import time
 import pymel.core as pc
 
 
@@ -36,7 +37,13 @@ class Window(Form, Base):
         self.close()
         
     def selectVRay(self):
-        pc.select(pc.ls(type=pc.nt.VRayMtl))
+        mtls = pc.ls(type=pc.nt.VRayMtl)
+        num = len(mtls)
+        pc.select(mtls)
+        self.materialLabel.setText(str(num) +' materials selected')
+        qApp.processEvents()
+        time.sleep(2)
+        self.materialLabel.setText('')
         
     def materials(self):
         materials = []
@@ -173,7 +180,6 @@ class Window(Form, Base):
         for coatMtl in coatMtls:
             coatArnolds.append(self.createArnold(coatMtl))
         layeredTexture = pc.shadingNode('layeredTexture', asTexture=True)
-        pc.rename(layeredTexture, str(blendMtlName) +'_layeredTexture')
         count = 0
         additive_mode = blendMtl.additive_mode.get()
         for coatMtl in coatArnolds:
@@ -188,7 +194,8 @@ class Window(Form, Base):
             baseArnold.outColor.connect(layeredTexture.attr("inputs")[count].color)
         newArnold = pc.shadingNode('aiStandard', asShader=True)
         pc.rename(blendMtl, blendMtlName + 'temp_blen_mtl')
-        blenMtlName = blendMtlName.replace('VRayBlendMtl', 'aiStandard')
+        blendMtlName = blendMtlName.replace('VRayBlendMtl', 'aiStandard')
+        pc.rename(layeredTexture, str(blendMtlName) +'_layeredTexture')
         pc.rename(newArnold, blendMtlName)
         for sg in pc.listConnections(newArnold, type=pc.nt.ShadingEngine):
             pc.delete(sg)
