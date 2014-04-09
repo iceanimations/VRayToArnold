@@ -27,7 +27,12 @@ class Window(Form, Base):
         import appUsageApp
         appUsageApp.updateDatabase('VRayToArnold')
         
-        
+    
+    def closeEvent(self, event):
+        self.deleteLater()
+    
+    def hideEvent(self, event):
+        self.close()
         
     def materials(self):
         materials = []
