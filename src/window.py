@@ -39,8 +39,11 @@ class Window(Form, Base):
     def selectVRay(self):
         mtls = pc.ls(type=pc.nt.VRayMtl)
         num = len(mtls)
+        msg = ' materials selected'
+        if num == 1: msg = ' material selected'
+        if num == 0: msg = 'No material found'; num=''
         pc.select(mtls)
-        self.materialLabel.setText(str(num) +' materials selected')
+        self.materialLabel.setText(str(num) + msg)
         qApp.processEvents()
         time.sleep(2)
         self.materialLabel.setText('')
