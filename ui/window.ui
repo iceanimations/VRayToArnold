@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>373</width>
+    <width>376</width>
     <height>185</height>
    </rect>
   </property>
@@ -20,6 +20,12 @@
     </property>
     <item>
      <widget class="QGroupBox" name="groupBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="title">
        <string>Selection Mode</string>
       </property>
@@ -200,7 +206,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>373</width>
+     <width>376</width>
      <height>19</height>
     </rect>
    </property>
