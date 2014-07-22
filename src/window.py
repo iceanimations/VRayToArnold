@@ -93,6 +93,8 @@ class Window(Form, Base):
                 self.handleBlendMtl(node)
                 continue
             arnold = self.createArnold(node)
+            if arnold == None:
+                return
             for shEng in pc.listConnections(node, type = 'shadingEngine'):
                 shEng.surfaceShader.disconnect()
                 arnold.outColor.connect(shEng.surfaceShader)
@@ -103,7 +105,11 @@ class Window(Form, Base):
         
     def createArnold(self, node):
         aicmd = 'createRenderNodeCB -asShader "surfaceShader" aiStandard ""'
-        arnold = pc.PyNode(pc.Mel.eval(aicmd))
+        try:
+            arnold = pc.PyNode(pc.Mel.eval(aicmd))
+        except:
+            pc.warning("Seems like Arnod is either not installed or not loaded")
+            return None
         for sg in pc.listConnections(arnold, type=pc.nt.ShadingEngine):
             pc.delete(sg)
         name = str(node)
