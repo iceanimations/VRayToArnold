@@ -13,6 +13,9 @@ import sys
 import time
 import pymel.core as pc
 
+import appUsageApp
+reload(appUsageApp)
+
 
 Form, Base = uic.loadUiType(r'%s\ui\window.ui'%osp.dirname(osp.dirname(__file__)))
 
@@ -26,10 +29,7 @@ class Window(Form, Base):
         self.progressBar.hide()
         
         # update the database, how many times this app is used
-        site.addsitedir(r'r:/pipe_repo/users/qurban')
-        import appUsageApp
-        reload(appUsageApp)
-        appUsageApp.updateDatabase('VRayToArnold')
+        appUsageApp.updateDatabase('VRayToArnold') 
         
     
     def closeEvent(self, event):
