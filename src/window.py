@@ -28,6 +28,7 @@ class Window(Form, Base):
         # update the database, how many times this app is used
         site.addsitedir(r'r:/pipe_repo/users/qurban')
         import appUsageApp
+        reload(appUsageApp)
         appUsageApp.updateDatabase('VRayToArnold')
         
     
