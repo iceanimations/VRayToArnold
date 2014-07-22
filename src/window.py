@@ -46,7 +46,7 @@ class Window(Form, Base):
         pc.select(mtls)
         self.materialLabel.setText(str(num) + msg)
         qApp.processEvents()
-        time.sleep(2)
+        time.sleep(1)
         self.materialLabel.setText('')
         
     def materials(self):
