@@ -114,6 +114,7 @@ class Window(Form, Base):
         for sg in pc.listConnections(arnold, type=pc.nt.ShadingEngine):
             pc.delete(sg)
         name = str(node)
+        print node
         pc.rename(node, name +"_temp_node")
         newName = name.replace('VRayMtl', "aiStandard")
         pc.rename(arnold, newName)
