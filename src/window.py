@@ -123,7 +123,7 @@ class Window(Form, Base):
                    'illumColor':'emissionColor', 'diffuseColorAmount': 'Kd',
                    'roughnessAmount': 'diffuseRoughness', 'reflectionColorAmount': 'Ks',
                    'transparency': 'opacity', 'refractionColorAmount': 'Kt', 'refractionIOR': 'IOR',
-                   'reflectionGlossiness': 'specularRoughness', 'refractionGlossiness': 'refractionRoughness'}
+                   'hilightGlossiness': 'specularRoughness', 'refractionGlossiness': 'refractionRoughness'}
 #                   'anisotropy': 'specularAnisotropy', 'anisotropyRotation': 'specularRotation'}
         
 #         if node.anisotropy.get() or node.anisotropyRotation.get():
@@ -144,7 +144,7 @@ class Window(Form, Base):
                     pc.delete(fileNode)
             except:
                 value = source.get()
-                if src == 'reflectionGlossiness' or src == 'refractionGlossiness':
+                if src == 'hilightGlossiness' or src == 'refractionGlossiness':
                     value = 1 - source.get()
                 target.set(value)
             if attr:
