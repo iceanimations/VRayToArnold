@@ -1,9 +1,6 @@
 import site
 site.addsitedir(r"R:\Pipe_Repo\Users\Qurban\utilities")
-try:
-    from uiContainer import uic
-except:
-    from PyQt4 import uic
+from uiContainer import uic
 from PyQt4.QtGui import *
 from PyQt4.QtCore import Qt
 import qtify_maya_window as qtfy
@@ -122,7 +119,8 @@ class Window(Form, Base):
         mapping = {'color':'color', 'reflectionColor': 'KsColor', 'refractionColor': 'KtColor',
                    'illumColor':'emissionColor', 'diffuseColorAmount': 'Kd',
                    'roughnessAmount': 'diffuseRoughness', 'reflectionColorAmount': 'Ks',
-                   'transparency': 'opacity', 'refractionColorAmount': 'Kt', 'refractionIOR': 'IOR',
+                   #'transparency': 'opacity',
+                   'refractionColorAmount': 'Kt', 'refractionIOR': 'IOR',
                    'hilightGlossiness': 'specularRoughness', 'refractionGlossiness': 'refractionRoughness'}
 #                   'anisotropy': 'specularAnisotropy', 'anisotropyRotation': 'specularRotation'}
         
