@@ -31,9 +31,6 @@ class Window(Form, Base):
     
     def closeEvent(self, event):
         self.deleteLater()
-    
-    def hideEvent(self, event):
-        self.close()
         
     def selectVRay(self):
         mtls = pc.ls(type=pc.nt.VRayMtl)
@@ -111,8 +108,10 @@ class Window(Form, Base):
         for sg in pc.listConnections(arnold, type=pc.nt.ShadingEngine):
             pc.delete(sg)
         name = str(node)
-        print node
-        pc.rename(node, name +"_temp_node")
+        try:
+            pc.rename(node, name +"_temp_node")
+        except RuntimeError as re:
+            pc.warning('Can not rename \"'+node+'\"')
         newName = name.replace('VRayMtl', "aiStandard")
         pc.rename(arnold, newName)
         
